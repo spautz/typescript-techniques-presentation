@@ -1,14 +1,14 @@
 {
-  "name": "@spautz/package-template",
+  "name": "typescript-techniques-presentation",
   "version": "0.0.1",
   "description": "My opinionated template for a single-package repo",
   "keywords": [],
   "license": "MIT",
-  "homepage": "https://github.com/spautz/package-template#readme",
-  "bugs": "https://github.com/spautz/package-template/issues",
+  "homepage": "https://github.com/spautz/typescript-techniques-presentation#readme",
+  "bugs": "https://github.com/spautz/typescript-techniques-presentation/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spautz/package-template.git"
+    "url": "https://github.com/spautz/typescript-techniques-presentation.git"
   },
   "author": {
     "name": "Steven Pautz",

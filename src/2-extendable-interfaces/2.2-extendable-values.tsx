@@ -23,15 +23,15 @@ export interface ButtonVariants {
   link: true;
 }
 
-type ButtonVariant = keyof ButtonVariants;
+type ButtonVariantName = keyof ButtonVariants;
 
 interface ButtonProps {
-  variant: ButtonVariant;
+  variant: ButtonVariantName;
 }
 
 const Button = (props: ButtonProps): ReactElement => {
   // implementation not relevant here
-  return <>{props}</>;
+  return <button>{props}</button>;
 };
 
 // Usage:
