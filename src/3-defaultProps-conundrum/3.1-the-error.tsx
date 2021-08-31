@@ -15,6 +15,7 @@ import React, { ReactElement } from 'react';
 //
 
 interface ModalProps {
+  // We use the raw value, instead of an extendable interface, solely to keep this example short
   size?: 'small' | 'medium' | 'large';
 }
 
