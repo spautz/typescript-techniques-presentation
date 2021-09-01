@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { ReactElement, ReactNode } from 'react';
 
 /**
@@ -38,23 +39,21 @@ type ModalRequiresChildren = true;
 type TextRequiresChildren = true;
 
 // Since all of the components follow the same general pattern, let's make some common helpers
-// instead of micro-managing their interfaces.
+// instead of creating each interface manually.
 
 type StandardPropsForComponent<
   ComponentVariant extends string,
   ComponentSize extends string,
   ComponentRequiresChildren extends boolean,
 > = (
-  props: ComponentRequiresChildren extends true
+  props: {
+    variant: ComponentVariant;
+    size: ComponentSize;
+  } & (ComponentRequiresChildren extends true
     ? {
-        variant: ComponentVariant;
-        size: ComponentSize;
         children: ReactNode;
       }
-    : {
-        variant: ComponentVariant;
-        size: ComponentSize;
-      },
+    : {}),
 ) => ReactElement;
 
 type ThemeShapeForComponent<
