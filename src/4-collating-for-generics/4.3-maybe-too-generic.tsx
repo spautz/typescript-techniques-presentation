@@ -1,23 +1,15 @@
-import React from 'react';
 import {
-  ButtonVariant,
-  ModalVariant,
-  TextVariant,
-  ButtonSize,
-  ModalSize,
-  TextSize,
-  ButtonElement,
-  ModalElement,
-  TextElement,
-  ButtonRequiresChildren,
-  ModalRequiresChildren,
-  TextRequiresChildren,
-} from './4.1-too-many-args';
-import {
-  ShapeForComponentMeta,
-  StandardPropsForComponent,
-  ThemeShapeForComponent,
-} from './4.2-pass-type-group';
+  ButtonVariantName,
+  ModalVariantName,
+  TextVariantName,
+  ButtonElementName,
+  ModalElementName,
+  TextElementName,
+  ButtonElementStyle,
+  ModalElementStyle,
+  TextElementStyle,
+} from './4b.1-too-many-args';
+import { ShapeForComponentMeta, ThemeShapeForComponent } from './4b.2-pass-type-group';
 
 /**
  * If you have a standard pattern that involves a lot of related types -- as can result when
@@ -41,76 +33,49 @@ import {
 // This adds even more type enforcement, but might be a bit overkill...
 interface AllMetas extends Record<string, ShapeForComponentMeta> {
   Button: {
-    Variant: ButtonVariant;
-    Size: ButtonSize;
-    Element: ButtonElement;
-    RequiresChildren: ButtonRequiresChildren;
+    VariantName: ButtonVariantName;
+    ElementName: ButtonElementName;
+    ElementStyle: ButtonElementStyle;
   };
   Modal: {
-    Variant: ModalVariant;
-    Size: ModalSize;
-    Element: ModalElement;
-    RequiresChildren: ModalRequiresChildren;
+    VariantName: ModalVariantName;
+    ElementName: ModalElementName;
+    ElementStyle: ModalElementStyle;
   };
   Text: {
-    Variant: TextVariant;
-    Size: TextSize;
-    Element: TextElement;
-    RequiresChildren: TextRequiresChildren;
+    VariantName: TextVariantName;
+    ElementName: TextElementName;
+    ElementStyle: TextElementStyle;
   };
 }
 
-// Since all of the components follow the same general pattern, let's make some common helpers
-// instead of micro-managing their interfaces.
+// Usage:
 
-const Button: StandardPropsForComponent<AllMetas['Button']> = (props) => {
-  const { variant, size } = props;
-
-  // implementation not relevant here
-  return <>{{ variant, size }}</>;
-};
-
-const buttonTheme: ThemeShapeForComponent<AllMetas['Button']> = {
+const buttonTheme: ThemeShapeForComponent<AllMetas['ButtonMeta']> = {
   primary: {
-    label: {
-      small: {},
-      medium: {},
-      large: {},
-    },
+    root: {},
+    label: {},
     overlay: {},
   },
   secondary: {},
   link: {},
 };
 
-const Text: StandardPropsForComponent<AllMetas['Text']> = (props) => {
-  const { variant, size, children } = props;
-
-  // implementation not relevant here
-  return <>{{ variant, size, children }}</>;
+const modalTheme: ThemeShapeForComponent<AllMetas['ModalMeta']> = {
+  error: {
+    frame: {},
+    closeButton: {},
+    overlay: {},
+  },
+  promotion: {},
 };
 
-const textTheme: ThemeShapeForComponent<AllMetas['Text']> = {
+const textTheme: ThemeShapeForComponent<AllMetas['TextMeta']> = {
   header: {},
   body: {},
 };
 
-// Usage:
-const example = <Button variant="primary" size="medium" />;
-const example2 = (
-  <Button variant="primary" size="medium">
-    Pass children?
-  </Button>
-);
-
-const example3 = <Text variant="header" size="large" />;
-const example4 = (
-  <Text variant="header" size="large">
-    Hello!
-  </Text>
-);
-
 // ============================================================================
 
 // Export to make the linter happy
-export { Button, buttonTheme, Text, textTheme, example, example2, example3, example4 };
+export { buttonTheme, modalTheme, textTheme };
