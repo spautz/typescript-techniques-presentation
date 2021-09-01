@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-/*
+/**
  * If you need defaultProps to be available outside of the file that defines them, there's no
  * one ideal -- but several okay alternatives.
  *
@@ -11,8 +11,8 @@ import React, { ReactElement } from 'react';
 
 // ============================================================================
 //
-// If you DO (or may) need to reference defaultProps from outside, a separate variable
-// can make the typings easier
+// If you *do* (or may) need to reference defaultProps from outside, a separate variable
+// makes the typings easier
 //
 
 interface ModalProps {
@@ -35,7 +35,7 @@ const Modal: React.FC<ModalProps> = (props): ReactElement => {
   const { size } = props as ModalProps & typeof modalDefaultProps;
 
   // Alternative:
-  // You could also forego `Component.defaultProps` entirely:
+  // You could also forego `Component.defaultProps` entirely and apply them yourself:
   // const { size } = { ...modalDefaultProps, ...props };
 
   const width = sizeOptions[size];

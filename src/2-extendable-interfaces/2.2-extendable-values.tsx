@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-/*
+/**
  * If your library needs to support extendable/overrideable string values, export an interface
  * and then derive the strings from that.
  *
@@ -17,7 +17,7 @@ import React, { ReactElement } from 'react';
 //
 
 export interface ButtonVariants {
-  // The values don't matter here
+  // Only the keys matter, here
   primary: true;
   secondary: true;
   link: true;
@@ -48,7 +48,10 @@ declare module './2.2-extendable-values' {
   }
 }
 
+// Usage:
+const example2 = <Button variant="myCustomName" />;
+
 // ============================================================================
 
 // Export to make the linter happy
-export { Button, example };
+export { Button, example, example2 };

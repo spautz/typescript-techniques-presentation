@@ -1,7 +1,25 @@
 import React from 'react';
-import { StandardPropsForComponent, ThemeShapeForComponent } from './4.2-pass-type-group';
+import {
+  ButtonVariant,
+  ModalVariant,
+  TextVariant,
+  ButtonSize,
+  ModalSize,
+  TextSize,
+  ButtonElement,
+  ModalElement,
+  TextElement,
+  ButtonRequiresChildren,
+  ModalRequiresChildren,
+  TextRequiresChildren,
+} from './4.1-too-many-args';
+import {
+  ShapeForComponentMeta,
+  StandardPropsForComponent,
+  ThemeShapeForComponent,
+} from './4.2-pass-type-group';
 
-/*
+/**
  * If you have a standard pattern that involves a lot of related types -- as can result when
  * you have extendable interfaces and derived types -- then utility types can help keep
  * everything standard.
@@ -18,30 +36,10 @@ import { StandardPropsForComponent, ThemeShapeForComponent } from './4.2-pass-ty
 // We use raw values, instead of extendable interfaces, solely to keep these examples short
 //
 
-// Each component has_many variants
-type ButtonVariant = 'primary' | 'secondary' | 'link';
-type ModalVariant = 'error' | 'promotion';
-type TextVariant = 'header' | 'body';
-
-// Each component has_many sizes
-type ButtonSize = 'small' | 'medium' | 'large';
-type ModalSize = 'responsive' | 'fullscreen';
-type TextSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-
-// Each component has_many elements
-type ButtonElement = 'label' | 'overlay';
-type ModalElement = 'frame' | 'closeButton' | 'overlay';
-type TextElement = 'text';
-
-// Some components require children
-type ButtonRequiresChildren = false;
-type ModalRequiresChildren = true;
-type TextRequiresChildren = true;
-
 // To make the interface for the helpers easier, we'll group all the above typings into buckets
 
-// This might be going a bit overboard....
-interface AllMetas {
+// This adds even more type enforcement, but might be a bit overkill...
+interface AllMetas extends Record<string, ShapeForComponentMeta> {
   Button: {
     Variant: ButtonVariant;
     Size: ButtonSize;
@@ -115,5 +113,4 @@ const example4 = (
 // ============================================================================
 
 // Export to make the linter happy
-export type { ModalVariant, ModalSize, ModalElement, ModalRequiresChildren };
 export { Button, buttonTheme, Text, textTheme, example, example2, example3, example4 };

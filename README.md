@@ -1,6 +1,6 @@
 # Presentation: Typescript Techniques from dk-web-fx
 
-This repo contains demos for a Web Technology Talk, given September 1, 2021.
+This repo contains demos for a Web Technology Group talk, given September 1, 2021.
 
 ## Standard Disclaimer
 

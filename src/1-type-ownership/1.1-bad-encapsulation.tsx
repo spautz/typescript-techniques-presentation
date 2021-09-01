@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextField, { StandardTextFieldProps } from '@material-ui/core/TextField';
 import { TextFieldChangeEvent } from '../global';
 
-/*
+/**
  * Use types from 3rd party libraries -- but don't reapply them directly.
  *
  * If you own the component, you own its interface.
@@ -38,11 +38,12 @@ const example = <MyTextField fullWidth />;
 // because you cannot change typings of the things you extend.
 //
 
-interface MyTextFieldProps extends StandardTextFieldProps {
+interface MyTextField2Props extends StandardTextFieldProps {
+  // Add `newValue` to the onChange callback -- but now it doesn't match StandardTextFieldProps!
   onChange2: (newValue: string, e: TextFieldChangeEvent) => void;
 }
 
-const MyTextField2 = (props: MyTextFieldProps): ReactElement => {
+const MyTextField2 = (props: MyTextField2Props): ReactElement => {
   const { onChange2, ...otherProps } = props;
 
   const onChangeWithValue = (e: TextFieldChangeEvent) => onChange2(e.target.value, e);

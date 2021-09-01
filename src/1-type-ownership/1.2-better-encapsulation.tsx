@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { TextFieldChangeEvent } from '../global';
 
-/*
+/**
  * Use types from 3rd party libraries -- but don't reapply them directly.
  *
  * If you own the component, you own its interface.
@@ -22,6 +22,7 @@ import { TextFieldChangeEvent } from '../global';
 //
 
 interface MyTextFieldProps {
+  // Duplicating is good, in this case, because if the library changes then this will break
   name: string;
   value: string;
   onChange: (newValue: string, e: TextFieldChangeEvent) => void;

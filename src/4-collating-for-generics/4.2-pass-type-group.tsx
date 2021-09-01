@@ -1,6 +1,20 @@
 import React, { ReactElement, ReactNode } from 'react';
+import {
+  ButtonVariant,
+  ModalVariant,
+  TextVariant,
+  ButtonSize,
+  ModalSize,
+  TextSize,
+  ButtonElement,
+  ModalElement,
+  TextElement,
+  ButtonRequiresChildren,
+  ModalRequiresChildren,
+  TextRequiresChildren,
+} from './4.1-too-many-args';
 
-/*
+/**
  * If you have a standard pattern that involves a lot of related types -- as can result when
  * you have extendable interfaces and derived types -- then utility types can help keep
  * everything standard.
@@ -16,26 +30,6 @@ import React, { ReactElement, ReactNode } from 'react';
 // ============================================================================
 // We use raw values, instead of extendable interfaces, solely to keep these examples short
 //
-
-// Each component has_many variants
-type ButtonVariant = 'primary' | 'secondary' | 'link';
-type ModalVariant = 'error' | 'promotion';
-type TextVariant = 'header' | 'body';
-
-// Each component has_many sizes
-type ButtonSize = 'small' | 'medium' | 'large';
-type ModalSize = 'responsive' | 'fullscreen';
-type TextSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-
-// Each component has_many elements
-type ButtonElement = 'label' | 'overlay';
-type ModalElement = 'frame' | 'closeButton' | 'overlay';
-type TextElement = 'text';
-
-// Some components require children
-type ButtonRequiresChildren = false;
-type ModalRequiresChildren = true;
-type TextRequiresChildren = true;
 
 // To make the interface for the helpers easier, we'll group all the above typings into buckets
 type ShapeForComponentMeta = {
@@ -143,10 +137,8 @@ const example4 = (
 
 // Export to make the linter happy
 export type {
-  ModalVariant,
-  ModalSize,
-  ModalElement,
-  ModalRequiresChildren,
+  ModalMeta,
+  ShapeForComponentMeta,
   StandardPropsForComponent,
   ThemeShapeForComponent,
 };

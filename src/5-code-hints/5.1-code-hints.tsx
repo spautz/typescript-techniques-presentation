@@ -1,24 +1,27 @@
 import React from 'react';
 
-/*
- * If you have a standard pattern that involves a lot of related types -- as can result when
- * you have extendable interfaces and derived types -- then utility types can help keep
- * everything standard.
+/**
+ * If you have a list of special values, but also need to accept any string (or number), simply
+ * adding `string` to the type will remove code hints and autocomplete in some IDEs -- like
+ * VS Code.
  *
- * Utility types need arguments, though, and if you have a lot of types then those arguments
- * can become complex or inconsistent themselves.
+ * The root problem is that `'value1' | 'value2' | string` all gets smushed into just `string`,
+ * because `'value1'` and `'value2'` are subclasses of `string`: Typescript doesn't keep the
+ * original details around because there's no value in checking those three possibilities
+ * when `string` covers them all.
  *
  * --
  *
- * Allowing `string` or `number` will clobber the other options
+ * We can avoid this by using a type that *accepts* all strings, but which `'value1'`, `'value2'`,
+ * etc do not inherit from: the intersection `string & Record<never, never>` gives us exactly that.
+ * This works for `number` as well -- it should work for any type.
+ *
+ * The "accept any string" part needs to come at the end of the union.
  */
 
 // ============================================================================
-// We use raw values, instead of extendable interfaces, solely to keep these examples short
-//
 
 type WidthKeyword =
-  | 0
   | 'auto'
   | 'fit-content'
   | 'inherit'
@@ -28,23 +31,21 @@ type WidthKeyword =
   | 'min-content'
   | 'unset';
 
-// Option 1: This doesn't work well
+// Option 1: This doesn't work great
 type AnyWidth = WidthKeyword | string;
 
 // Option 2: This works in all IDEs
 // type AnyWidth = WidthKeyword | (string & Record<never, never>);
 
 // Option 3: Alternate syntax that you might see
-// type AnyWidth = WidthKeyword | (string & {}});
+// type AnyWidth = WidthKeyword | (string & {});
 
 const MyComponent: React.FC<{ width: AnyWidth }> = (props) => {
-  const { width } = props;
-
-  return <div style={{ width }} />;
+  return <div style={{ width: props.width }} />;
 };
 
 // Usage:
-const example: AnyWidth = 'min';
+const example: AnyWidth = 'auto';
 const example2 = <MyComponent width="12px" />;
 
 // ============================================================================

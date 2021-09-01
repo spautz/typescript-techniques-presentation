@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 
-/*
+/**
  * If you have a standard pattern that involves a lot of related types -- as can result when
  * you have extendable interfaces and derived types -- then utility types can help keep
  * everything standard.
@@ -27,10 +27,10 @@ type ButtonSize = 'small' | 'medium' | 'large';
 type ModalSize = 'responsive' | 'fullscreen';
 type TextSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
-// Each component has_many elements
-type ButtonElement = 'label' | 'overlay';
+// Each component-variant has_many elements
+type ButtonElement = 'root' | 'label' | 'overlay';
 type ModalElement = 'frame' | 'closeButton' | 'overlay';
-type TextElement = 'text';
+type TextElement = 'atom';
 
 // Some components require children
 type ButtonRequiresChildren = false;
@@ -129,5 +129,18 @@ const example4 = (
 // ============================================================================
 
 // Export to make the linter happy
-export type { ModalVariant, ModalSize, ModalElement, ModalRequiresChildren };
+export type {
+  ButtonVariant,
+  ModalVariant,
+  TextVariant,
+  ButtonSize,
+  ModalSize,
+  TextSize,
+  ButtonElement,
+  ModalElement,
+  TextElement,
+  ButtonRequiresChildren,
+  ModalRequiresChildren,
+  TextRequiresChildren,
+};
 export { Button, buttonTheme, Text, textTheme, example, example2, example3, example4 };

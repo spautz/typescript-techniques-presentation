@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import TextField, { StandardTextFieldProps } from '@material-ui/core/TextField';
 import { TextFieldChangeEvent } from '../global';
 
-/*
+/**
  * Use types from 3rd party libraries -- but don't reapply them directly.
  *
  * If you own the component, you own its interface.

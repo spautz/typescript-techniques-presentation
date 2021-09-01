@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-/*
+/**
  * If your library needs to support extendable/overrideable string values, export an interface
  * and then derive the strings from that.
  *
@@ -24,7 +24,7 @@ interface ButtonProps {
 
 const Button = (props: ButtonProps): ReactElement => {
   // implementation not relevant here
-  return <>{props}</>;
+  return <button>{props}</button>;
 };
 
 // Usage:
