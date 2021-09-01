@@ -28,7 +28,7 @@ const sizeOptions = {
 const Modal: React.FC<ModalProps> = (props): ReactElement => {
   const { size } = props;
 
-  // `size` is `'small' | 'medium' | 'large' | undefined` -- and `undefined` isn't valid here
+  // `size` is `'small' | 'medium' | 'large' | undefined` -- and `undefined` isn't a valid key
   const width = sizeOptions[size];
 
   return <div style={{ width }} />;

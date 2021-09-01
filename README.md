@@ -1,5 +1,3 @@
-<a id="readme"></a>
-
 # Presentation: Typescript Techniques from dk-web-fx
 
 This repo contains demos for a Web Technology Group talk, given September 1, 2021.
@@ -15,7 +13,7 @@ you should decide for yourself whether they make sense in your app.
 ## Examples
 
 Each directory under `src/` presents a particular typescript scenario and a few
-different approaches to typing it -- generally one bad practice and 1-2
+different approaches to typing it. Each shows one bad approach and 1-2
 better options.
 
 ### [Type Ownership](./src/1-type-ownership/)
